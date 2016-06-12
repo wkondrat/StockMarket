@@ -11,17 +11,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ReaderImpl implements Reader {
-	private List<String> readedStocksDataList = new ArrayList<String>();
-
-	public List<String> getReadedStocksDataList() {
-		return readedStocksDataList;
+	private List<String> readStocksDataList = new ArrayList<String>();
+	
+	@Override
+	public List<String> getReadStocksDataList() {
+		return readStocksDataList;
 	}
 
 	public void setReadedStocksDataList(List<String> readedStocksDataList) {
-		this.readedStocksDataList = readedStocksDataList;
+		this.readStocksDataList = readedStocksDataList;
 	}
-
-	public void readFileCSV(String csvFile) {
+	
+	@Override
+	public List<String> readFileCSV(String csvFile) {
 //		String csvFile = "dane.csv";
 		BufferedReader br = null;
 		String line = "";
@@ -29,7 +31,7 @@ public class ReaderImpl implements Reader {
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
 			while ((line = br.readLine()) != null) {
-				readedStocksDataList.add(line);
+				readStocksDataList.add(line);
 			}
 
 		} catch (FileNotFoundException e) {
@@ -45,5 +47,6 @@ public class ReaderImpl implements Reader {
 				}
 			}
 		}
+		return readStocksDataList;
 	}
 }

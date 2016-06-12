@@ -19,6 +19,7 @@ public class ParserImpl implements Parser {
 		this.stockPricesList = stockPricesList;
 	}
 
+	@Override
 	public List<StockPrices> parseList(List<String> listToParse) {
 		String cvsSplitBy = ",";
 		for (String i : listToParse) {
@@ -30,10 +31,7 @@ public class ParserImpl implements Parser {
 	}
 	
 	private StockPrices createStockPrice(String[] stocks) {
-		StockPrices stockPrices = new StockPrices();
-		stockPrices.setStockName(stocks[0]);
-		stockPrices.setDate(Integer.parseInt(stocks[1]));
-		stockPrices.setStockPrice(Double.parseDouble(stocks[2]));
+		StockPrices stockPrices = new StockPrices(stocks[0], Integer.parseInt(stocks[1]), Double.parseDouble(stocks[2]));
 		return stockPrices;
 	}
 }

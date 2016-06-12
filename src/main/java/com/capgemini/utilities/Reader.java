@@ -1,5 +1,8 @@
 package com.capgemini.utilities;
 
+import java.util.List;
+
 public interface Reader {
-	public void readFileCSV(String csvFile);
+	List<String> readFileCSV(String csvFile);
+	List<String> getReadStocksDataList();
 }
