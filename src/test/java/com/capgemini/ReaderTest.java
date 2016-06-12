@@ -2,20 +2,27 @@ package com.capgemini;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.capgemini.utilities.ReaderImpl;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "Test-context.xml")
 public class ReaderTest {
+	
+	@Autowired
+	private ReaderImpl reader;
 	
 	@Test
 	public void TestShouldReturnEmptyListWhenNoFileWasReaded() {
 		//given
-		Reader reader = new Reader();
 		//when
 		List<String> readedList = reader.getReadedStocksDataList();
 		//then
@@ -25,7 +32,6 @@ public class ReaderTest {
 	@Test
 	public void TestShouldReturnNotEmptyListWhenFileWasReaded() {
 		//given
-		Reader reader = new Reader();
 		reader.readFileCSV("dane.csv");
 		//when
 		List<String> readedList = reader.getReadedStocksDataList();

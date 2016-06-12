@@ -1,19 +1,36 @@
 package com.capgemini;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.capgemini.stockExchange.StockExchangeImpl;
+import com.capgemini.stockExchange.StockPrices;
+import com.capgemini.utilities.ParserImpl;
+import com.capgemini.utilities.ReaderImpl;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "Test-context.xml")
 public class StockExchangeTest {
-
+	@Autowired
+	ReaderImpl reader;
+	@Autowired
+	ParserImpl parser;
+	@Autowired 
+	StockExchangeImpl stockExchange;
+	
+	
 	@Test
 	public void testShouldCheckIfEachUpdateCurrentStockPricesListHasSameSize() {
 		// given
-		Parser parser = new Parser();
-		Reader reader = new Reader();
-		StockExchange stockExchange = new StockExchange();
 		reader.readFileCSV("dane.csv");
 		List<String> listToParse = reader.getReadedStocksDataList();
 		List<StockPrices> stockPrices = parser.parseList(listToParse);
@@ -28,9 +45,6 @@ public class StockExchangeTest {
 	@Test
 	public void testShouldCheckIfEachUpdateCurrentStockPricesListHasDifferentValues() {
 		// given
-		Parser parser = new Parser();
-		Reader reader = new Reader();
-		StockExchange stockExchange = new StockExchange();
 		reader.readFileCSV("dane.csv");
 		List<String> listToParse = reader.getReadedStocksDataList();
 		List<StockPrices> stockPrices = parser.parseList(listToParse);

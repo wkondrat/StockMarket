@@ -1,4 +1,4 @@
-package com.capgemini;
+package com.capgemini.stockExchange;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class StockExchange {
+import org.springframework.stereotype.Service;
+
+@Service
+public class StockExchangeImpl implements StockExchange {
 	private Integer currentDate = null;
 	private Iterator it;
 

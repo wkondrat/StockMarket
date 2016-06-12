@@ -1,11 +1,16 @@
-package com.capgemini;
+package com.capgemini.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parser {
-	private List<StockPrices> stockPricesList = new ArrayList<StockPrices>();
+import org.springframework.stereotype.Component;
 
+import com.capgemini.stockExchange.StockPrices;
+
+@Component
+public class ParserImpl implements Parser {
+	private List<StockPrices> stockPricesList = new ArrayList<StockPrices>();
+	
 	public List<StockPrices> getStockPricesList() {
 		return stockPricesList;
 	}
@@ -23,7 +28,7 @@ public class Parser {
 		}
 		return stockPricesList;
 	}
-
+	
 	private StockPrices createStockPrice(String[] stocks) {
 		StockPrices stockPrices = new StockPrices();
 		stockPrices.setStockName(stocks[0]);

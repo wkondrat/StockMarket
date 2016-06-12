@@ -1,4 +1,4 @@
-package com.capgemini;
+package com.capgemini.utilities;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reader {
+import org.springframework.stereotype.Component;
+
+@Component
+public class ReaderImpl implements Reader {
 	private List<String> readedStocksDataList = new ArrayList<String>();
 
 	public List<String> getReadedStocksDataList() {
