@@ -24,7 +24,6 @@ public class ReaderImpl implements Reader {
 	
 	@Override
 	public List<String> readFileCSV(String csvFile) {
-//		String csvFile = "dane.csv";
 		BufferedReader br = null;
 		String line = "";
 

@@ -1,10 +1,11 @@
 package com.capgemini;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,16 +16,19 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.capgemini.broker.Broker;
 import com.capgemini.stockExchange.StockExchange;
 import com.capgemini.stockExchange.StockPrices;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "Test-context.xml")
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
-public class StockExchangeTest {
+public class BrokerTest {
 
 	@Autowired
 	StockExchange stockExchange;
+	@Autowired
+	Broker broker;
 
 	List<StockPrices> stockPrices;
 
@@ -41,42 +45,30 @@ public class StockExchangeTest {
 	}
 
 	@Test
-	public void testShouldReturnStockPricesForCurrentDate() {
+	public void testShouldGetStockPricesList() {
 		// given
-		List<StockPrices> currentStockPrices;
 		stockExchange.setStockPricesList(stockPrices);
-
-		// when
-		currentStockPrices = stockExchange.updateCurrentStockPrices();
-		
-		// then
-		assertEquals(currentStockPrices.size(), 2);
-		assertEquals(currentStockPrices.get(0), stockPrices.get(0));
-		assertEquals(currentStockPrices.get(1), stockPrices.get(1));
+		List<StockPrices> todaysStockPricesList;
+		//when
+		todaysStockPricesList = broker.getTodaysStockPrices();
+		//then
+		assertFalse(todaysStockPricesList.isEmpty());
 	}
-
+	
 	@Test
-	public void testShouldUpdateCurrentDateSavedInStockExchange() {
+	public void testShouldUpdateStockPricesList() {
 		// given
-		List<StockPrices> currentStockPrices;
 		stockExchange.setStockPricesList(stockPrices);
-
-		// when
-		currentStockPrices = stockExchange.updateCurrentStockPrices();
-
-		// then
-		assertEquals(currentStockPrices.size(), 2);
-
-		// when
-		currentStockPrices = stockExchange.updateCurrentStockPrices();
-		
-		// then
-		assertEquals(currentStockPrices.size(), 3);
+		List<StockPrices> beforeStockPricesList;
+		List<StockPrices> todaysStockPricesList;
+		//when
+		beforeStockPricesList = broker.getTodaysStockPrices();
+		todaysStockPricesList = broker.getTodaysStockPrices();
+		//then
+		assertFalse(todaysStockPricesList.isEmpty());
+		assertNotEquals(beforeStockPricesList,todaysStockPricesList);
+		assertEquals(beforeStockPricesList.get(0).getStockName(),todaysStockPricesList.get(0).getStockName());
+		assertNotEquals(beforeStockPricesList.get(0).getDate(),todaysStockPricesList.get(0).getDate());
 	}
 
-	@Test(expected = NoSuchElementException.class)
-	public void testShould() {
-		// when
-		List<StockPrices> currentStockPrices = stockExchange.updateCurrentStockPrices();
-	}
 }
