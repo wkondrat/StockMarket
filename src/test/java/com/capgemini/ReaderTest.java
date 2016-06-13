@@ -1,8 +1,8 @@
 package com.capgemini;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class ReaderTest {
 	}
 
 	@Test
-	public void TestShouldReadFile() {
+	public void TestShouldReadFile() throws IOException {
 		//given
 		List<String> readedList;
 		//when
@@ -43,19 +43,17 @@ public class ReaderTest {
 		assertFalse(readedList.isEmpty());	
 	}
 	
-//	@Ignore
-//	@Test(expected = FileNotFoundException.class)
-//	public void TestShouldThrowExceptionWhenFileWasImproper() {
-//		//given
-//		Reader reader = new Reader();
-//		//when
-//		try {
-//			reader.readFileCSV("test");
-//			fail("should throw file not found exception"); 
-//		} catch (FileNotFoundException e) {
-//		// expected
-//		} catch (Exception e) {
-//		fail("should throw file not found exception"); 
-//		}
-//	}
+
+	@Test
+	public void TestShouldThrowIOException() throws IOException {
+		//given
+		//when
+		try {
+			reader.readFileCSV("test");
+			fail("should throw IOException"); 
+		} catch (IOException e) {
+		// expected
+			assertTrue(true);
+		} 
+	}
 }

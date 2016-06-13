@@ -6,6 +6,13 @@ public class StocksWallet {
 	long playerID;
 	Map<String,Long> mapOfPlayerStocks;
 	
+	public StocksWallet() {}
+	
+	public StocksWallet(long playerID, Map<String,Long> mapOfPlayerStocks) {
+		this.playerID = playerID;
+		this.mapOfPlayerStocks = mapOfPlayerStocks;
+	}
+	
 	public long getPlayerID() {
 		return playerID;
 	}
@@ -23,6 +30,13 @@ public class StocksWallet {
 	}
 	
 	public void addStocks(long playerID, String stockName, long stocksQuantity) {
-		
+		stocksQuantity = (mapOfPlayerStocks.get(stockName) + stocksQuantity);
+		mapOfPlayerStocks.put(stockName, stocksQuantity);
+	}
+	
+	public void subtractStocks(long playerID, String stockName, long stocksQuantity) {
+		stocksQuantity = (mapOfPlayerStocks.get(stockName) - stocksQuantity);
+		// throw NotEnoughStocksException
+		mapOfPlayerStocks.put(stockName, stocksQuantity);
 	}
 }

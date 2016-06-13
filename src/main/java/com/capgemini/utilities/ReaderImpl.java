@@ -23,7 +23,7 @@ public class ReaderImpl implements Reader {
 	}
 	
 	@Override
-	public List<String> readFileCSV(String csvFile) {
+	public List<String> readFileCSV(String csvFile) throws IOException {
 		BufferedReader br = null;
 		String line = "";
 
@@ -32,20 +32,9 @@ public class ReaderImpl implements Reader {
 			while ((line = br.readLine()) != null) {
 				readStocksDataList.add(line);
 			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+			throw e;
+		} 
 		return readStocksDataList;
 	}
 }
