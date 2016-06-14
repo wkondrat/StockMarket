@@ -69,6 +69,7 @@ public class BrokerTest {
 		assertNotEquals(beforeStockPricesList,todaysStockPricesList);
 		assertEquals(beforeStockPricesList.get(0).getStockName(),todaysStockPricesList.get(0).getStockName());
 		assertNotEquals(beforeStockPricesList.get(0).getDate(),todaysStockPricesList.get(0).getDate());
+		
 	}
 
 }

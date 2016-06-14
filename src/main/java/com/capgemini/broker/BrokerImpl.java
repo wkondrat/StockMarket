@@ -47,7 +47,6 @@ public class BrokerImpl implements Broker {
 		for (StockPrices i : historicalListOfStocks) {
 			sortedDateSet.add(i.getDate());
 		}
-		System.out.println(sortedDateSet.size());
 		return sortedDateSet.size();
 	}
 

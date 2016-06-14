@@ -77,6 +77,6 @@ public class StockExchangeTest {
 	@Test(expected = NoSuchElementException.class)
 	public void testShould() {
 		// when
-		List<StockPrices> currentStockPrices = stockExchange.updateCurrentStockPrices();
+		stockExchange.updateCurrentStockPrices();
 	}
 }
