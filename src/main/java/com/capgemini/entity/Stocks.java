@@ -30,12 +30,6 @@ public class Stocks implements java.io.Serializable {
 		this.stockDate = stockDate;
 		this.stockPrice = stockPrice;
 	}
-	
-	public Stocks(String stockName, int stockDate, double stockPrice) {
-		this.stockName = stockName;
-		this.stockDate = stockDate;
-		this.stockPrice = stockPrice;
-	}
 
 	public Integer getId() {
 		return this.id;

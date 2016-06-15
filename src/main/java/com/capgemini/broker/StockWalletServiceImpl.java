@@ -17,12 +17,12 @@ public class StockWalletServiceImpl implements StocksWalletService {
 	private StocksWalletRepository stocksWalletRepository;
 	
 	@Override
-	public List<OwnedStocks> findPlayerStocks(Long playerID) {
+	public List<OwnedStocks> findPlayerStocks(Integer playerID) {
 		return stocksWalletRepository.findPlayerStocks(playerID);
 	}
 
 	@Override
-	public OwnedStocks findPlayerSpecificStocks(Long playerID, String stockName) {
+	public OwnedStocks findPlayerSpecificStocks(Integer playerID, String stockName) {
 		return stocksWalletRepository.findPlayerSpecificStocks(playerID, stockName);
 	}
 

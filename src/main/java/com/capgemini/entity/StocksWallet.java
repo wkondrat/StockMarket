@@ -13,29 +13,27 @@ public class StocksWallet implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 
-	@Lob
-	private long playerID;
+	private Integer playerID;
 
 	private String stockName;
 
-	@Lob
-	private Long stockQuantity;
+	private Integer stockQuantity;
 
 	public StocksWallet() {
 	}
 	
-	public StocksWallet(Integer id, Long playerID, String stockName, Long stockQuantity) {
+	public StocksWallet(Integer id, Integer playerID, String stockName, Integer stockQuantity) {
 		this.id = id;
 		this.playerID = playerID;
 		this.stockName = stockName;
 		this.stockQuantity = stockQuantity;
 	}
 	
-	public StocksWallet(Long playerID, String stockName, Long stockQuantity) {
-		this.playerID = playerID;
-		this.stockName = stockName;
-		this.stockQuantity = stockQuantity;
-	}
+//	public StocksWallet(Integer playerID, String stockName, Integer stockQuantity) {
+//		this.playerID = playerID;
+//		this.stockName = stockName;
+//		this.stockQuantity = stockQuantity;
+//	}
 
 	public Integer getId() {
 		return this.id;
@@ -45,11 +43,11 @@ public class StocksWallet implements Serializable {
 		this.id = id;
 	}
 
-	public Long getPlayerID() {
+	public Integer getPlayerID() {
 		return this.playerID;
 	}
 
-	public void setPlayerID(Long playerID) {
+	public void setPlayerID(Integer playerID) {
 		this.playerID = playerID;
 	}
 
@@ -61,11 +59,11 @@ public class StocksWallet implements Serializable {
 		this.stockName = stockName;
 	}
 
-	public Long getStockQuantity() {
+	public Integer getStockQuantity() {
 		return this.stockQuantity;
 	}
 
-	public void setStockQuantity(Long stockQuantity) {
+	public void setStockQuantity(Integer stockQuantity) {
 		this.stockQuantity = stockQuantity;
 	}
 

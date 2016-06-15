@@ -16,22 +16,7 @@ public class RecorderServiceImpl implements RecorderService {
 
 	@Autowired
 	private StocksRepository stockRepository;
-	
-	@Override
-	public Stocks createStocks(Stocks stocks) {
-		return stockRepository.save(stocks);
-	}
-
-	@Override
-	public List<Stocks> findStockByName(String stockName) {
-		return stockRepository.findStocksByName(stockName);
-	}
-
-	@Override
-	public List<Stocks> findStocksByDate(int stockDate) {
-		return stockRepository.findStocksByDate(stockDate);
-	}
-	
+		
 	@Override
 	public void sendDataToDatabase (List<StockPrices> stockPrices) {
 		for (StockPrices i : stockPrices) {

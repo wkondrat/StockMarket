@@ -45,13 +45,4 @@ public class StocksWalletTest {
 		// then
 		assertEquals(stocksWallet.getMapOfPlayerStocks().get("STOCK3"), Long.valueOf(6));
 	}
-
-	@Test
-	public void test() {
-		// given
-		long playerID = 1;
-		StocksWalletPrev stocksWallet = new StocksWalletPrev(playerID, mapOfPlayerStocks);
-		// when
-		Map<String,Long> mapOfPlayerStocks = stocksWallet.getMapOfPlayerStocks();
-	}
 }

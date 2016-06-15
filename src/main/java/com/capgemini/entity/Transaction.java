@@ -5,12 +5,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@NamedQuery(name="Transaction.findAll", query="SELECT t FROM Transaction t")
+@NamedQuery(name = "Transaction.findAll", query = "SELECT t FROM Transaction t")
 public class Transaction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idTransaction;
 
 	private double amount;
@@ -25,10 +25,20 @@ public class Transaction implements Serializable {
 
 	private double stockPrice;
 
-	@Lob
-	private Long stockQuantity;
+	private Integer stockQuantity;
 
 	public Transaction() {
+	}
+
+	public Transaction(Integer idTransaction, String stockName, Integer stockQuantity, double stockPrice, double amount,
+			Date startDate, Date endDate) {
+		this.idTransaction = idTransaction;
+		this.stockName = stockName;
+		this.stockQuantity = stockQuantity;
+		this.stockPrice = stockPrice;
+		this.amount = amount;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 
 	public Integer getIdTransaction() {
@@ -79,11 +89,11 @@ public class Transaction implements Serializable {
 		this.stockPrice = stockPrice;
 	}
 
-	public Long getStockQuantity() {
+	public Integer getStockQuantity() {
 		return this.stockQuantity;
 	}
 
-	public void setStockQuantity(Long stockQuantity) {
+	public void setStockQuantity(Integer stockQuantity) {
 		this.stockQuantity = stockQuantity;
 	}
 

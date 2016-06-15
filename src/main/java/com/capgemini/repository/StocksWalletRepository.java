@@ -12,9 +12,9 @@ import com.capgemini.entity.StocksWallet;
 public interface StocksWalletRepository extends JpaRepository<StocksWallet, Integer>{
 	
 	@Query("select stocksWallet from StocksWallet stocksWallet where stocksWallet.playerID like :playerID")
-	List<OwnedStocks> findPlayerStocks(@Param("playerID") Long playerID);
+	List<OwnedStocks> findPlayerStocks(@Param("playerID") Integer playerID);
 	
 	@Query("select stocksWallet from StocksWallet stocksWallet where stocksWallet.playerID like :playerID and stocksWallet.stockName like :stockName")
-	OwnedStocks findPlayerSpecificStocks(@Param("playerID") Long playerID, @Param("stockName") String stockName);
+	OwnedStocks findPlayerSpecificStocks(@Param("playerID") Integer playerID, @Param("stockName") String stockName);
 	
 }
