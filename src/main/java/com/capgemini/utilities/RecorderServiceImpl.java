@@ -7,18 +7,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.capgemini.entity.Stocks;
-import com.capgemini.repository.StockRepository;
+import com.capgemini.repository.StocksRepository;
+import com.capgemini.stockExchange.StockPrices;
 
 @Service
 @Transactional(readOnly = true)
-public class RecorderImpl implements Recorder {
+public class RecorderServiceImpl implements RecorderService {
 
 	@Autowired
-	private StockRepository stockRepository;
+	private StocksRepository stockRepository;
 	
 	@Override
 	public Stocks createStocks(Stocks stocks) {
-		stocks.setId(null);
 		return stockRepository.save(stocks);
 	}
 
@@ -32,4 +32,11 @@ public class RecorderImpl implements Recorder {
 		return stockRepository.findStocksByDate(stockDate);
 	}
 	
+	@Override
+	public void sendDataToDatabase (List<StockPrices> stockPrices) {
+		for (StockPrices i : stockPrices) {
+			Stocks stocks = new Stocks(null, i.getStockName(), i.getDate(), i.getStockPrice());
+			stockRepository.save(stocks);
+		}
+	}
 }

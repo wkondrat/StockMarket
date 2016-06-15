@@ -3,7 +3,7 @@ package com.capgemini.player;
 import java.util.Map;
 
 import com.capgemini.bank.Currency;
-import com.capgemini.broker.Transaction;
+import com.capgemini.entity.Transaction;
 
 public interface Player {
 	Map<Currency, Double> checkAccount();

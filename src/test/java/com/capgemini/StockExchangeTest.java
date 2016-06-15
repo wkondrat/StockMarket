@@ -45,10 +45,8 @@ public class StockExchangeTest {
 		// given
 		List<StockPrices> currentStockPrices;
 		stockExchange.setStockPricesList(stockPrices);
-
 		// when
-		currentStockPrices = stockExchange.updateCurrentStockPrices();
-		
+		currentStockPrices = stockExchange.updateCurrentStockPrices();		
 		// then
 		assertEquals(currentStockPrices.size(), 2);
 		assertEquals(currentStockPrices.get(0), stockPrices.get(0));
@@ -63,13 +61,11 @@ public class StockExchangeTest {
 
 		// when
 		currentStockPrices = stockExchange.updateCurrentStockPrices();
-
 		// then
 		assertEquals(currentStockPrices.size(), 2);
 
 		// when
-		currentStockPrices = stockExchange.updateCurrentStockPrices();
-		
+		currentStockPrices = stockExchange.updateCurrentStockPrices();	
 		// then
 		assertEquals(currentStockPrices.size(), 3);
 	}

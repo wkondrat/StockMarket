@@ -2,13 +2,13 @@ package com.capgemini.broker;
 
 import java.util.Map;
 
-public class StocksWallet {
+public class StocksWalletPrev {
 	long playerID;
 	Map<String,Long> mapOfPlayerStocks;
 	
-	public StocksWallet() {}
+	public StocksWalletPrev() {}
 	
-	public StocksWallet(long playerID, Map<String,Long> mapOfPlayerStocks) {
+	public StocksWalletPrev(long playerID, Map<String,Long> mapOfPlayerStocks) {
 		this.playerID = playerID;
 		this.mapOfPlayerStocks = mapOfPlayerStocks;
 	}

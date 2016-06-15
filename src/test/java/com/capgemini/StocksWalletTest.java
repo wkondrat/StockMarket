@@ -8,7 +8,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.capgemini.broker.StocksWallet;
+import com.capgemini.broker.StocksWalletPrev;
 
 public class StocksWalletTest {
 
@@ -27,7 +27,7 @@ public class StocksWalletTest {
 		// given
 		long playerID = 1;
 		long numberOfStocksToAdd = 3;
-		StocksWallet stocksWallet = new StocksWallet(playerID, mapOfPlayerStocks);
+		StocksWalletPrev stocksWallet = new StocksWalletPrev(playerID, mapOfPlayerStocks);
 		// when
 		stocksWallet.addStocks(playerID, "STOCK1", numberOfStocksToAdd);
 		// then
@@ -39,7 +39,7 @@ public class StocksWalletTest {
 		// given
 		long playerID = 1;
 		long numberOfStocksToSubtract = 3;
-		StocksWallet stocksWallet = new StocksWallet(playerID, mapOfPlayerStocks);
+		StocksWalletPrev stocksWallet = new StocksWalletPrev(playerID, mapOfPlayerStocks);
 		// when
 		stocksWallet.subtractStocks(playerID, "STOCK3", numberOfStocksToSubtract);
 		// then
@@ -50,7 +50,7 @@ public class StocksWalletTest {
 	public void test() {
 		// given
 		long playerID = 1;
-		StocksWallet stocksWallet = new StocksWallet(playerID, mapOfPlayerStocks);
+		StocksWalletPrev stocksWallet = new StocksWalletPrev(playerID, mapOfPlayerStocks);
 		// when
 		Map<String,Long> mapOfPlayerStocks = stocksWallet.getMapOfPlayerStocks();
 	}

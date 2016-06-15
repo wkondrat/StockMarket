@@ -14,27 +14,26 @@ import javax.persistence.Table;
 public class Stocks implements java.io.Serializable {
 	
 	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "id", unique = true, nullable = false)
+	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 	private String stockName;
-	private int stockData;
+	private int stockDate;
 	private double stockPrice;
 
 	public Stocks() {
 	}
 
-	public Stocks(Integer id, String stockName, int stockData, double stockPrice) {
+	public Stocks(Integer id, String stockName, int stockDate, double stockPrice) {
 		this.id = id;
 		this.stockName = stockName;
-		this.stockData = stockData;
+		this.stockDate = stockDate;
 		this.stockPrice = stockPrice;
 	}
 	
-	public Stocks(String stockName, int stockData, double stockPrice) {
+	public Stocks(String stockName, int stockDate, double stockPrice) {
 		this.stockName = stockName;
-		this.stockData = stockData;
+		this.stockDate = stockDate;
 		this.stockPrice = stockPrice;
 	}
 
@@ -55,13 +54,13 @@ public class Stocks implements java.io.Serializable {
 		this.stockName = stockName;
 	}
 
-	@Column(name = "stockData", nullable = false)
-	public int getStockData() {
-		return this.stockData;
+	@Column(name = "stockDate", nullable = false)
+	public int getStockDate() {
+		return this.stockDate;
 	}
 
-	public void setStockData(int stockData) {
-		this.stockData = stockData;
+	public void setStockDate(int stockDate) {
+		this.stockDate = stockDate;
 	}
 
 	@Column(name = "stockPrice", nullable = false, precision = 22, scale = 0)
